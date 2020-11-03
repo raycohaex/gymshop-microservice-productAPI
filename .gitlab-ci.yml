@@ -36,20 +36,20 @@ variables:
 stages:
   - build
   - test
-#  - deploy
+  - deploy
 
 before_script:
     - "cd src"
     - "dotnet restore"
 
-build_job:
+build:
   stage: build
   only:
     - docker
   script:
     - 'dotnet build'
 
-test_job:
+test:
   stage: test
   only:
     - docker
@@ -57,14 +57,14 @@ test_job:
     - "cd $test"
     - "dotnet test"
   dependencies:
-    - build_job
+    - build
 
-deploy_job:
+deploy:
   stage: deploy
   only:
     - tags
   script:
     echo "Deploy de applicatie naar docker hier"
   dependencies:
-    - build_job
-    - test_job
+    - build
+    - test
