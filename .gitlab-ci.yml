@@ -44,14 +44,14 @@ before_script:
 
 build:
   stage: build
-  only:
+  tags:
     - docker
   script:
     - 'dotnet build'
 
 test:
   stage: test
-  only:
+  tags:
     - docker
   script:
     - "cd $test"
@@ -61,8 +61,8 @@ test:
 
 deploy:
   stage: deploy
-  only:
-    - tags
+  tags:
+    - docker
   script:
     echo "Deploy de applicatie naar docker hier"
   dependencies:
