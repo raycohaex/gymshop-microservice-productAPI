@@ -34,8 +34,8 @@ variables:
 # NUNIT_PATH: 'C:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe'
 
 stages:
-  - build
-  - test
+  - build_job
+  - test_job
 #  - deploy
 
 before_script:
@@ -59,12 +59,12 @@ test_job:
   dependencies:
     - build_job
 
-deploy_job:
-  stage: deploy
-  only:
-    - tags
-  script:
-    echo "Deploy de applicatie naar docker hier"
-  dependencies:
-    - build_job
-    - test_job
+#deploy_job:
+#  stage: deploy
+#  only:
+#    - tags
+#  script:
+#    echo "Deploy de applicatie naar docker hier"
+#  dependencies:
+#    - build_job
+#    - test_job
