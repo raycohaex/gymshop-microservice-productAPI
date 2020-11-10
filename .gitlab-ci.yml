@@ -25,7 +25,7 @@
 image: mcr.microsoft.com/dotnet/core/sdk:3.1
 
 variables:
-    test: 'gymshopapi.test'
+    test: 'GymShopAPI.test'
 # MSI_RELEASE_FOLDER: 'Setup\bin\Release'
 # TEST_FOLDER: 'Tests\bin\Release'
 # DEPLOY_FOLDER: 'P:\Projects\YourApp\Builds'
