@@ -39,7 +39,7 @@ stages:
   - deploy
 
 before_script:
-    - "cd GymShopAPI"
+    - "cd GymShopAPI.BBL"
     - "dotnet restore"
 
 build:
