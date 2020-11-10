@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace GymShopAPI.Models
+namespace GymShopAPI.DAL.Models
 {
     public static class ModelBuilderExtensions
     {

@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GymShopAPI.Models
+namespace GymShopAPI.DAL.Models
 {
     public class ShopContext : DbContext
     {
         public ShopContext(DbContextOptions<ShopContext> options) : base(options)
         {
-
+          
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

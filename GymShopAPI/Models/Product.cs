@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace GymShopAPI.Models
+namespace GymShopAPI.DAL.Models
 {
     public class Product
     {

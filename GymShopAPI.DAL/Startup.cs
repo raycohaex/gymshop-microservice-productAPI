@@ -2,18 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GymShopAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using GymShopAPI.DAL.Models;
+using GymShopAPI.DAL.Interfaces;
+using GymShopAPI.DAL.Controllers;
+using Microsoft.EntityFrameworkCore;
 
-namespace GymShopAPI
+namespace GymShopAPI.BLL
 {
     public class Startup
     {
@@ -27,9 +29,11 @@ namespace GymShopAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IProductsDbAccess, ProductsDbAccess>();
             services.AddDbContext<ShopContext>(
                 options => options.UseMySql(Configuration.GetConnectionString("DatabaseConnection"))
             );
+
             services.AddControllers();
             services.AddScoped<ShopContext>();
         }

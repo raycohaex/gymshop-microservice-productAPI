@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GymShopAPI.Classes
+namespace GymShopAPI.DAL.Classes
 {
     public class ProductQueryParameters : QueryParameters
     {

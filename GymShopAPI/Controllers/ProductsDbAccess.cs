@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GymShopAPI.Classes;
-using GymShopAPI.Models;
+using GymShopAPI.DAL.Classes;
+using GymShopAPI.DAL.Models;
+using GymShopAPI.DAL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace GymShopAPI.Controllers
+namespace GymShopAPI.DAL.Controllers
 {
-    [Route("[controller]")]
-    [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsDbAccess : IProductsDbAccess
     {
         private readonly ShopContext _context;
 
-        public ProductsController(ShopContext context)
+        public ProductsDbAccess(ShopContext context)
         {
             //DI
             _context = context;
@@ -25,8 +24,7 @@ namespace GymShopAPI.Controllers
             _context.Database.EnsureCreated();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAllProducts([FromQuery] ProductQueryParameters queryParameters)
+        public async Task<Product[]> GetAllProducts(ProductQueryParameters queryParameters)
         {
             IQueryable<Product> products = _context.Products;
 
@@ -52,43 +50,35 @@ namespace GymShopAPI.Controllers
             //products = products
             //   .Skip(queryParameters.Size * (queryParameters.Page - 1))
             //    .Take(queryParameters.Size);
-            return Ok(await products.ToArrayAsync());
+            return await products.ToArrayAsync();
         }
 
-        //extra argument {id} zorgt ervoor dat er een extra argument word toegevoegd aan de huidige controller, de url is dus product/{id}
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetProduct(int id)
+        public async Task<Product> GetProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);
 
             if (product == null)
             {
-                return NotFound();
+                return null;
             }
 
-            return Ok(product);
+            return product;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct([FromBody] Product product)
+        public async Task<ActionResult<Product>> PostProduct(Product product)
         {
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(
-                "GetProduct",
-                new { id = product.Id },
-                product
-                );
+            return product;
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] Product product)
+        public async Task<IActionResult> PutProduct(int id, Product product)
         {
             if (id != product.Id)
             {
                 // als ID's niet matchen krijg je bad request (500)
-                return BadRequest();
+                return null;
             }
 
             _context.Entry(product).State = EntityState.Modified;
@@ -101,20 +91,19 @@ namespace GymShopAPI.Controllers
             {
                 if(_context.Products.Find(id) == null)
                 {
-                    return NotFound();
+                    return null;
                 }
                 throw;
             }
-            return NoContent();
+            return null;
         }
 
-        [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
-                return NotFound();
+                return null;
             }
 
             _context.Products.Remove(product);

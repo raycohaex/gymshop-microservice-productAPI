@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace GymShopAPI.Migrations
+namespace GymShopAPI.DAL.Migrations
 {
     public partial class DbInit : Migration
     {
