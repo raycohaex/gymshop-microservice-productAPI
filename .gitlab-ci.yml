@@ -54,6 +54,7 @@ test:
   tags:
     - docker
   script:
+    - "cd ../"
     - "cd $test"
     - "dotnet test"
   dependencies:
