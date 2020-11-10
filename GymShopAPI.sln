@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymShopAPI.DAL", "GymShopAPI\GymShopAPI.DAL.csproj", "{05B51A7B-E237-40E1-AEAB-2E2CE6E29F1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymShopAPI.DAL", "GymShopAPI.DAL\GymShopAPI.DAL.csproj", "{05B51A7B-E237-40E1-AEAB-2E2CE6E29F1E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymShopAPI.test", "GymShopAPI.test\GymShopAPI.test.csproj", "{A6E8DADA-9DC6-4FC9-9861-8EF119082104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymShopAPI.BBL", "GymShopAPI.DAL\GymShopAPI.BBL.csproj", "{F12F608D-F5E5-416D-A070-0FA6C6EFDCDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymShopAPI.BBL", "GymShopAPI.BBL\GymShopAPI.BBL.csproj", "{F12F608D-F5E5-416D-A070-0FA6C6EFDCDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

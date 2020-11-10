@@ -19,4 +19,4 @@ ENV ASPNETCORE_URLS=https://+:5001
 EXPOSE 5000 5001
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["./GymShopAPI"]
+ENTRYPOINT ["./GymShopAPI.BBL"]

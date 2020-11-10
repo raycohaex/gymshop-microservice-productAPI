@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartupObject>GymShopAPI.DAL.Program</StartupObject>
+    <StartupObject></StartupObject>
     <UserSecretsId>756438a4-56b2-41cc-9bb9-83343d0cc9fa</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <RootNamespace>GymShopAPI.DAL</RootNamespace>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
