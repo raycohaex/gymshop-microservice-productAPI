@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GymShopAPI\GymShopAPI.DAL.csproj" />
+    <ProjectReference Include="..\GymShopAPI.DAL\GymShopAPI.DAL.csproj" />
   </ItemGroup>
 
 

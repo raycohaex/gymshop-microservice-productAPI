@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GymShopAPI.DAL\GymShopAPI.BBL.csproj" />
-    <ProjectReference Include="..\GymShopAPI\GymShopAPI.DAL.csproj" />
+    <ProjectReference Include="..\GymShopAPI.BBL\GymShopAPI.BBL.csproj" />
+    <ProjectReference Include="..\GymShopAPI.DAL\GymShopAPI.DAL.csproj" />
   </ItemGroup>
 
 </Project>
