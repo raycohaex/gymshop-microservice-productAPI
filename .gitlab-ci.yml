@@ -39,6 +39,9 @@ stages:
   - deploy
 
 before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
     - "cd GymShopAPI.BBL"
     - "dotnet restore"
 
@@ -61,11 +64,15 @@ test:
     - build
 
 deploy:
+  type: deploy
   stage: deploy
   tags:
     - docker
+  image: ruby:latest
   script:
-    echo "Deploy de applicatie naar docker hier"
+    - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
+  only: 
+    - master
   dependencies:
     - build
     - test
