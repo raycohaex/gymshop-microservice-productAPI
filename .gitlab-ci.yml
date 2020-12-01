@@ -70,6 +70,6 @@ deploy:
     # above two commands can be replaced with: "heroku container:push web --app my-awesome-app-dev"
     - heroku container:release web --app gymshop-product-api
   only:
-    - develop
+    - master
   dependencies:
     - test
