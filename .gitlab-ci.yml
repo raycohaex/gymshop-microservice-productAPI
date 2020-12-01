@@ -82,9 +82,9 @@ deploy:
     - heroku container:login
     #Build product service
     - docker build -f Dockerfile --tag web .
-    - docker tag web $CI_REGISTRY /GymShopAPI/web
-    - docker push $CI_REGISTRY /GymShopAPI/web
-    - heroku container:release web --app GymShopAPI
+    - docker tag web $CI_REGISTRY/gymshopapi-product-service/web
+    - docker push $CI_REGISTRY/gymshopapi-product-service/web
+    - heroku container:release web --app gymshopapi-product-service
     #Remove credentials
     - rm ~/.netrc
 
