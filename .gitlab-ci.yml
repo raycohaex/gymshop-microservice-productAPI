@@ -81,7 +81,7 @@ deploy:
     #Heroku actions
     - heroku container:login
     #Build product service
-    - docker build -f Dockerfile.Auth --tag web .
+    - docker build -f Dockerfile --tag web .
     - docker tag web $CI_REGISTRY /GymShopAPI/web
     - docker push $CI_REGISTRY /GymShopAPI/web
     - heroku container:release web --app GymShopAPI
