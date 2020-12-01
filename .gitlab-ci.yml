@@ -22,16 +22,16 @@
 
 
 # place project specific paths in variables to make the rest of the script more generic
-#image: mcr.microsoft.com/dotnet/core/sdk:3.1
-image: docker:latest
-
-services:
-  - name: docker:dind
-    alias: docker
+image: mcr.microsoft.com/dotnet/core/sdk:3.1
 
 variables:
     test: 'GymShopAPI.test'
-    DOCKER_DRIVER: overlay
+# MSI_RELEASE_FOLDER: 'Setup\bin\Release'
+# TEST_FOLDER: 'Tests\bin\Release'
+# DEPLOY_FOLDER: 'P:\Projects\YourApp\Builds'
+# NUGET_PATH: 'C:\NuGet\nuget.exe'
+# MSBUILD_PATH: 'C:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe'
+# NUNIT_PATH: 'C:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe'
 
 stages:
   - build
@@ -39,35 +39,52 @@ stages:
   - deploy
 
 before_script:
-  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-  - apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community nodejs-npm
-  - npm i -g heroku
+    - "cd GymShopAPI.BBL"
+    - "dotnet restore"
 
-#build:
-#  stage: build
-#  tags:
-#    - docker
-#  script:
-#    - 'dotnet build'
+build:
+  stage: build
+  script:
+    - 'dotnet build'
 
 test:
   stage: test
-  tags:
-    - docker
   script:
-    - echo "Testing stage skipped"
+    - "cd ../"
+    - "cd $test"
+    - "dotnet test"
+  dependencies:
+    - build
 
 deploy:
   stage: deploy
-  tags:
-  - docker
-  script:
-    - docker run -t -v $PWD:/app --workdir /app mcr.microsoft.com/dotnet/core/sdk:3.1 bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
-    - docker build -t $CI_REGISTRY/gymshop-product-api/web .
-    - docker push $CI_REGISTRY/gymshop-product-api/web
-    # above two commands can be replaced with: "heroku container:push web --app my-awesome-app-dev"
-    - heroku container:release web --app gymshop-product-api
-  only:
-    - master
+  image: docker:19.03.12
   dependencies:
-    - test
+  - build
+  - test
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  services:
+    - docker:19.03.12-dind
+  before_script:
+    - apk add curl nodejs npm
+    - npm install -g heroku
+  script:
+    #Add login details so we don't need to manually log in
+    - touch ~/.netrc
+    - echo "machine api.heroku.com" >> ~/.netrc
+    - echo "  login $CI_REGISTRY_USER" >> ~/.netrc
+    - echo "  password $HEROKU_API_KEY " >> ~/.netrc
+    - echo "machine git.heroku.com" >> ~/.netrc
+    - echo "  login $CI_REGISTRY_USER" >> ~/.netrc
+    - echo "  password $HEROKU_API_KEY " >> ~/.netrc
+    #Heroku actions
+    - heroku container:login
+    #Build product service
+    - docker build -f Dockerfile.Auth --tag web .
+    - docker tag web $CI_REGISTRY /GymShopAPI/web
+    - docker push $CI_REGISTRY /GymShopAPI/web
+    - heroku container:release web --app GymShopAPI
+    #Remove credentials
+    - rm ~/.netrc
+
