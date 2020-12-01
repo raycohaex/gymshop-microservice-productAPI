@@ -9,8 +9,8 @@ COPY GymShopAPI.DAL/*.csproj ./GymShopAPI.DAL/
 RUN dotnet restore GymShopAPI.BBL
 
 # Copy everything else and build
-COPY GymShopAPI.BBL.csproj/. ./GymShopAPI.BBL/
-COPY GymShopAPI.DAL.csproj/. ./GymShopAPI.DAL/
+COPY GymShopAPI.BBL/. ./GymShopAPI.BBL/
+COPY GymShopAPI.DAL/. ./GymShopAPI.DAL/
 
 RUN dotnet publish -c Release -o out GymShopAPI.BBL
 
