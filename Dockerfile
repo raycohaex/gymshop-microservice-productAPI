@@ -21,4 +21,4 @@ ENV ASPNETCORE_URLS=https://+:5001
 EXPOSE 5000 5001 $port
 WORKDIR /app
 COPY --from=build-env /app/out .
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet GymShopAPI.BLL.dll
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet GymShopAPI.BBL.dll
