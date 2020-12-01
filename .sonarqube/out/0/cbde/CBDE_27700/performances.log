@@ -1,0 +1,62 @@
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Classes\ProductQueryParameters.cs
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Classes\QueryParameters.cs
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Controllers\IProductsDbAccess.cs
+GetAllProducts 8
+GetAllProducts -1
+GetProduct 7
+GetProduct -1
+PostProduct 5
+PostProduct -1
+PutProduct 7
+PutProduct -1
+DeleteProduct 14
+DeleteProduct -1
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Controllers\ProductsDbAccess.cs
+GetAllProducts 17
+GetAllProducts -1
+GetProduct 15
+GetProduct -1
+PostProduct 8
+PostProduct -1
+PutProduct 5
+PutProduct -1
+DeleteProduct 6
+DeleteProduct -1
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Migrations\20201014102101_DbInit.cs
+Up 19
+Up -1
+Down 55
+Down -1
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Migrations\20201014102101_DbInit.Designer.cs
+BuildTargetModel 10
+BuildTargetModel -1
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Migrations\ShopContextModelSnapshot.cs
+BuildModel 8
+BuildModel -1
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Models\Category.cs
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Models\ModelBuilderExtensions.cs
+Seed 48
+Seed -1
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Models\Order.cs
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Models\Product.cs
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Models\ShopContext.cs
+OnModelCreating 5
+OnModelCreating -1
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\Models\User.cs
+
+C:\Users\rayco\AppData\Local\Temp\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\obj\Debug\netcoreapp3.1\GymShopAPI.DAL.AssemblyInfo.cs
+

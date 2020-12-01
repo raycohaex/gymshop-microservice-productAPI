@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>GymShopAPI.test</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Test</ProjectType>
+  <ProjectGuid>a6e8dada-9dc6-4fc9-9861-8ef119082104</ProjectGuid>
+  <FullPath>D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.test\GymShopAPI.test.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\.sonarqube\out\2\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePaths">D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.test\bin\Debug\netcoreapp3.1\GymShopAPI.test.dll.RoslynCA.json|D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.test\bin\Debug\netcoreapp3.1\GymShopAPI.test.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPaths">D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\.sonarqube\out\2</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+</ProjectInfo>

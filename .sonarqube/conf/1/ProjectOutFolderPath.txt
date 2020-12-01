@@ -1,0 +1,1 @@
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\.sonarqube\out\1

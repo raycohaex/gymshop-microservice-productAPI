@@ -1,0 +1,6 @@
+projectKey=dotnet-gymshop
+serverUrl=http://localhost:9069
+serverVersion=8.5.1.38104
+dashboardUrl=http://localhost:9069/dashboard?id=dotnet-gymshop
+ceTaskId=AXX60rcBf0Y_qTrRHYwL
+ceTaskUrl=http://localhost:9069/api/ce/task?id=AXX60rcBf0Y_qTrRHYwL

@@ -1,0 +1,27 @@
+Product projects
+---------------------------------------
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.DAL\GymShopAPI.DAL.csproj
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.BBL\GymShopAPI.BBL.csproj
+
+
+Test projects
+---------------------------------------
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.test\GymShopAPI.test.csproj
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\ProductServiceIntegrationtests\ProductServiceIntegrationtests.csproj
+
+
+Invalid projects
+---------------------------------------
+{none}
+
+
+Skipped projects
+---------------------------------------
+{none}
+
+
+Excluded projects
+---------------------------------------
+{none}
+
+

@@ -1,0 +1,30 @@
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.BBL\Controllers\ProductsController.cs
+GetAllProducts 5
+GetAllProducts -1
+GetProduct 7
+GetProduct -1
+PostProduct 12
+PostProduct -1
+PutProduct 8
+PutProduct -1
+DeleteProduct 10
+DeleteProduct -1
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.BBL\Program.cs
+Main 9
+Main -1
+CreateHostBuilder 5
+CreateHostBuilder -1
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.BBL\Startup.cs
+ConfigureServices 5
+ConfigureServices -1
+Configure 3
+Configure -1
+
+C:\Users\rayco\AppData\Local\Temp\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.BBL\obj\Debug\netcoreapp3.1\GymShopAPI.BBL.MvcApplicationPartsAssemblyInfo.cs
+
+D:\School\semester3\eigenproject\docker-dotnet-sql-test1\GymShopAPI\GymShopAPI.BBL\obj\Debug\netcoreapp3.1\GymShopAPI.BBL.AssemblyInfo.cs
+
