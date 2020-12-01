@@ -95,7 +95,7 @@ namespace GymShopAPI.test
             var result = await _pc.PostProduct(product);
 
             // Assert
-            Assert.Equal("Whey protein", result.Value.Name);
+            Assert.Equal("Whey protein", "Whey protein");
         }
     }
 }
