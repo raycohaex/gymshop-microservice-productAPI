@@ -54,10 +54,7 @@ test:
   tags:
     - docker
   script:
-    echo 'test'
-    #- "cd ../"
-    #- "cd $test"
-    #- "dotnet test"
+    - echo "Testing stage skipped"
 
 deploy:
   stage: deploy
