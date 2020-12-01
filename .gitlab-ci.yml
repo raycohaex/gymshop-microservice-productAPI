@@ -26,7 +26,8 @@
 image: docker:latest
 
 services:
-  - docker:dind
+  - name: docker:dind
+    alias: docker
 
 variables:
     test: 'GymShopAPI.test'
