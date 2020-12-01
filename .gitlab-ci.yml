@@ -22,16 +22,15 @@
 
 
 # place project specific paths in variables to make the rest of the script more generic
-image: mcr.microsoft.com/dotnet/core/sdk:3.1
+#image: mcr.microsoft.com/dotnet/core/sdk:3.1
+image: docker:latest
+
+services:
+  - docker:dind
 
 variables:
     test: 'GymShopAPI.test'
-# MSI_RELEASE_FOLDER: 'Setup\bin\Release'
-# TEST_FOLDER: 'Tests\bin\Release'
-# DEPLOY_FOLDER: 'P:\Projects\YourApp\Builds'
-# NUGET_PATH: 'C:\NuGet\nuget.exe'
-# MSBUILD_PATH: 'C:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe'
-# NUNIT_PATH: 'C:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe'
+    DOCKER_DRIVER: overlay
 
 stages:
   - build
@@ -39,33 +38,38 @@ stages:
   - deploy
 
 before_script:
-    - "cd GymShopAPI.BBL"
-    - "dotnet restore"
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  - apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community nodejs-npm
+  - npm i -g heroku
 
-build:
-  stage: build
-  tags:
-    - docker
-  script:
-    - 'dotnet build'
+#build:
+#  stage: build
+#  tags:
+#    - docker
+#  script:
+#    - 'dotnet build'
 
 test:
   stage: test
   tags:
     - docker
   script:
-    - "cd ../"
-    - "cd $test"
-    - "dotnet test"
-  dependencies:
-    - build
+    echo 'test'
+    #- "cd ../"
+    #- "cd $test"
+    #- "dotnet test"
 
 deploy:
   stage: deploy
   tags:
-    - docker
+  - docker
   script:
-    echo "Deploy de applicatie naar docker hier"
+    - docker run -t -v $PWD:/app --workdir /app mcr.microsoft.com/dotnet/core/sdk:3.1 bash -c "dotnet restore && dotnet publish -c Release -o ./bin/Release/PublishOutput"
+    - docker build -t $CI_REGISTRY/gymshop-product-api/web .
+    - docker push $CI_REGISTRY/gymshop-product-api/web
+    # above two commands can be replaced with: "heroku container:push web --app my-awesome-app-dev"
+    - heroku container:release web --app gymshop-product-api
+  only:
+    - develop
   dependencies:
-    - build
     - test
