@@ -3,8 +3,8 @@ WORKDIR /app
 
 # Copy csproj and restore as distinct layers
 COPY GymShopAPI.sln ./
-COPY GymShopAPI.BBL.csproj ./GymShopAPI.BBL/
-COPY GymShopAPI.DAL.csproj ./GymShopAPI.DAL/
+COPY GymShopAPI.BBL/*.csproj ./GymShopAPI.BBL/
+COPY GymShopAPI.DAL/*.csproj ./GymShopAPI.DAL/
 
 RUN dotnet restore GymShopAPI.BBL
 
@@ -21,4 +21,4 @@ ENV ASPNETCORE_URLS=https://+:5001
 EXPOSE 5000 5001 $port
 WORKDIR /app
 COPY --from=build-env /app/out .
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet GymShopAPI.BLL
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet GymShopAPI.BLL.dll
