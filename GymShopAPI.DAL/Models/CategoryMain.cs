@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace GymShopAPI.DAL.Models
 {
-    public class Order
+    public class CategoryMain
     {
         public int Id { get; set; }
-        public DateTime OrderDate { get; set; }
-        public int UserId { get; set; }
+        public string Name { get; set; }
 
         [JsonIgnore]
-        public virtual User User { get; set; }
-        public virtual List<Product> Products { get; set; }
+        public virtual List<Category> Categories { get; set; }
     }
 }

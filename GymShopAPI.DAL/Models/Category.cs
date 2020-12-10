@@ -9,6 +9,8 @@ namespace GymShopAPI.DAL.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int CategoryMainId { get; set; }
         public virtual List<Product> Products { get; set; }
+        public virtual CategoryMain CategoryMain { get; set; }
     }
 }

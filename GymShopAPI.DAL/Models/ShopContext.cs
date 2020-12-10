@@ -16,16 +16,12 @@ namespace GymShopAPI.DAL.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasMany(c => c.Products).WithOne(a => a.Category).HasForeignKey(a => a.CategoryId);
-            modelBuilder.Entity<Order>().HasMany(o => o.Products);
-            modelBuilder.Entity<Order>().HasOne(o => o.User);
-            modelBuilder.Entity<User>().HasMany(u => u.Orders).WithOne(o => o.User).HasForeignKey(o => o.UserId);
+            modelBuilder.Entity<CategoryMain>().HasMany(c => c.Categories).WithOne(a => a.CategoryMain).HasForeignKey(a => a.CategoryMainId);
 
             modelBuilder.Seed();
         }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<User> Users { get; set; }
     }
 }
