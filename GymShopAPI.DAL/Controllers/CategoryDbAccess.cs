@@ -33,16 +33,19 @@ namespace GymShopAPI.DAL.Controllers
             return await categories;
         }
 
-        public async Task<Category> GetCategory(int id)
+        public async Task<List<CategoryMain>> GetCategoriesByMain(string name)
         {
-            var cat = await _context.Categories.FindAsync(id);
+            var cat = _context.CategoryMain
+                .Where(d => d.Name == name)
+                .Include(i => i.Categories)
+                .ToListAsync();
 
             if (cat == null)
             {
                 return null;
             }
 
-            return  cat;
+            return await cat;
         }
     }
 }
