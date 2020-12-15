@@ -31,6 +31,7 @@ namespace GymShopAPI.BLL
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IProductsDbAccess, ProductsDbAccess>();
+            services.AddScoped<ICategoryDbAccess, CategoryDbAccess>();
             services.AddDbContext<ShopContext>(
                 options => options.UseMySql(Configuration.GetConnectionString("DatabaseConnection"))
             );
