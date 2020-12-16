@@ -53,6 +53,21 @@ namespace GymShopAPI.DAL.Controllers
             return await products.ToArrayAsync();
         }
 
+        public async Task<List<Category>> GetAllProductsFromSubCategory(string catName, ProductQueryParameters queryParameters)
+        {
+            var categorizedProducts = _context.Categories
+                .Where(c => c.Name == catName)
+                .Include(p => p.Products)
+                .ToListAsync();
+
+
+            //products = products
+            //   .Skip(queryParameters.Size * (queryParameters.Page - 1))
+            //    .Take(queryParameters.Size);
+            return await categorizedProducts;
+        }
+        
+
         public async Task<Product> GetProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);

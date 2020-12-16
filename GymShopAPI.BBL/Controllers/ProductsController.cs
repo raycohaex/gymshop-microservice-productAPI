@@ -30,6 +30,12 @@ namespace GymShopAPI.BLL.Controllers
             return await _ProductsDbAccess.GetAllProducts(queryParameters);
         }
 
+        [HttpGet("category/{catName}")]
+        public async Task<List<Category>> GetAllProductsFromSubCategory(string catName, [FromQuery] ProductQueryParameters queryParameters)
+        {
+            return await _ProductsDbAccess.GetAllProductsFromSubCategory(catName, queryParameters);
+        }
+
         //extra argument {id} zorgt ervoor dat er een extra argument word toegevoegd aan de huidige controller, de url is dus product/{id}
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
