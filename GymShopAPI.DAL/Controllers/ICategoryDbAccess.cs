@@ -12,5 +12,6 @@ namespace GymShopAPI.DAL.Interfaces
     {
         public Task<List<CategoryMain>> GetAllCategories();
         public Task<List<CategoryMain>> GetCategoriesByMain(string name);
+        public Task<List<CategoryMain>> GetAllMainCategories();
     }
 }

@@ -47,5 +47,13 @@ namespace GymShopAPI.DAL.Controllers
 
             return await cat;
         }
+
+        public async Task<List<CategoryMain>> GetAllMainCategories()
+        {
+            var mainCategories = _context.CategoryMain
+                .ToListAsync();
+
+            return await mainCategories;
+        }
     }
 }
