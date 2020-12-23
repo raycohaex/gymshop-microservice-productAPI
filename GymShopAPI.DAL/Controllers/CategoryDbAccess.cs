@@ -33,12 +33,12 @@ namespace GymShopAPI.DAL.Controllers
             return await categories;
         }
 
-        public async Task<List<CategoryMain>> GetCategoriesByMain(string name)
+        public async Task<CategoryMain> GetCategoriesByMain(string name)
         {
             var cat = _context.CategoryMain
                 .Where(d => d.Name == name)
                 .Include(i => i.Categories)
-                .ToListAsync();
+                .FirstOrDefaultAsync();
 
             if (cat == null)
             {

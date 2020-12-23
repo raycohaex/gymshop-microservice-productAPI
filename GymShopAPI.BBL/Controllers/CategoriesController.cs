@@ -32,7 +32,7 @@ namespace GymShopAPI.BBL.Controllers
 
         //extra argument {id} zorgt ervoor dat er een extra argument word toegevoegd aan de huidige controller, de url is dus product/{id}
         [HttpGet("/categories/{name}")]
-        public async Task<List<CategoryMain>> GetCategory(string name)
+        public async Task<CategoryMain> GetCategory(string name)
         {
             return await _CategoryDbAccess.GetCategoriesByMain(name);
         }

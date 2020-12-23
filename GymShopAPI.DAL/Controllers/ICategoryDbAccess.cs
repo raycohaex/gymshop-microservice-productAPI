@@ -11,7 +11,7 @@ namespace GymShopAPI.DAL.Interfaces
     public interface ICategoryDbAccess
     {
         public Task<List<CategoryMain>> GetAllCategories();
-        public Task<List<CategoryMain>> GetCategoriesByMain(string name);
+        public Task<CategoryMain> GetCategoriesByMain(string name);
         public Task<List<CategoryMain>> GetAllMainCategories();
     }
 }
