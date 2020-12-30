@@ -24,6 +24,9 @@ namespace GymShopAPI.BLL.Controllers
             _ProductsDbAccess = ProductsDbAccess;
         }
 
+        /// <summary>
+        /// Gets all products limited by query parameters.
+        /// </summary>
         [HttpGet]
         public async Task<Product[]> GetAllProducts([FromQuery] ProductQueryParameters queryParameters)
         {

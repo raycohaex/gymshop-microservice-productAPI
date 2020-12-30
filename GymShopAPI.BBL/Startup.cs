@@ -14,6 +14,9 @@ using GymShopAPI.DAL.Models;
 using GymShopAPI.DAL.Interfaces;
 using GymShopAPI.DAL.Controllers;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using System.IO;
+using Microsoft.OpenApi.Models;
 
 namespace GymShopAPI.BLL
 {
@@ -52,6 +55,15 @@ namespace GymShopAPI.BLL
                                         .SetIsOriginAllowed((host) => true);
                                   });
             });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Product service API",
+                    Description = "Provides a catalog for GymShop including products and categories. This is a full CRUD system.",
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +73,12 @@ namespace GymShopAPI.BLL
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseHttpsRedirection();
 
