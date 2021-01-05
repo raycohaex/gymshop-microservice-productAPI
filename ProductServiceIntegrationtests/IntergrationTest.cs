@@ -27,9 +27,10 @@ namespace ProductServiceIntegrationtests
         /// <param name="endpoint">The url to call to</param>
         /// <returns></returns>
         [Theory]
-        [InlineData("/products")]
+        [InlineData("/Categories")]
         [InlineData("/products/1")]
-        public async Task GetProductControllerShoutReturnOkFast(string endpoint)
+        [InlineData("/categories/main")]
+        public async Task CheckHeaderProductDefaultRoutes(string endpoint)
         {
             // Arrange
             var client = _factory.CreateClient();
