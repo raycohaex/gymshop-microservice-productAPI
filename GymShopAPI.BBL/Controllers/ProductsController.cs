@@ -36,7 +36,7 @@ namespace GymShopAPI.BLL.Controllers
                 return NotFound();
             }
 
-            return Ok(products);
+            return products;
         }
 
         //extra argument {id} zorgt ervoor dat er een extra argument word toegevoegd aan de huidige controller, de url is dus product/{id}
@@ -44,11 +44,11 @@ namespace GymShopAPI.BLL.Controllers
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
             var product = await _ProductsDbAccess.GetProduct(id);
-            if(product == null)
+            if(product != null)
             {
-                return NotFound();
+                return product;
             }
-            return Ok(product);
+            return NotFound();
         }
 
         [HttpPost]

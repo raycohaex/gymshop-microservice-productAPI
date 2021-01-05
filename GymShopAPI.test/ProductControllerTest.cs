@@ -9,6 +9,7 @@ using GymShopAPI.DAL.Interfaces;
 using GymShopAPI.BLL.Controllers;
 using Grumpy.Common.Threading;
 using System.Net;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GymShopAPI.test
 {
@@ -36,13 +37,14 @@ namespace GymShopAPI.test
                 Sku = "abc",
                 Name = "Whey protein",
                 Description = "Protein powder",
+                Price = 5
 
             };
-            _pdba.Setup(x => x.GetProduct(id))
+            _pdba.Setup(x => x.GetProduct(1))
                 .ReturnsAsync(product);
 
             // Act
-            var result = await _pc.GetProduct(id);
+            var result = await _pc.GetProduct(1);
 
             // Assert
             Assert.Equal(id, result.Value.Id);
