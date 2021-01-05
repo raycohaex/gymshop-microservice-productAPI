@@ -24,47 +24,36 @@ namespace GymShopAPI.DAL.Controllers
             _context.Database.EnsureCreated();
         }
 
-        public async Task<Product[]> GetAllProducts(ProductQueryParameters queryParameters)
+        public async Task<Category> GetAllProductsFromSubCategory(string mainCategory, string catName, ProductQueryParameters queryParameters)
         {
-            IQueryable<Product> products = _context.Products;
 
-            if (queryParameters.MinPrice != null && queryParameters.MaxPrice != null)
+            var mainCategoryId = _context.CategoryMain
+                .Where(m => m.Name == mainCategory)
+                .FirstOrDefault();
+
+            if (mainCategoryId != null)
             {
-                products = products.Where(
-                    p => p.Price >= queryParameters.MinPrice.Value &&
-                         p.Price <= queryParameters.MaxPrice.Value
-                );
+                // Main category exists
+                var subCategoryId = _context.Categories
+                .Where(s => s.Name == catName && s.CategoryMainId == mainCategoryId.Id)
+                .FirstOrDefault();
+
+                if(subCategoryId != null) { 
+                    // Sub category exists and is part of main category
+                    var categorizedProducts = _context.Categories
+                    .Where(c => c.Name == catName && c.CategoryMainId == mainCategoryId.Id)
+                    .Include(p => p.Products)
+                    .FirstOrDefaultAsync();
+                    return await categorizedProducts;
+                } else
+                {
+                    // Main category exists, sub doesnt.
+                    return null;
+                }
             }
 
-            if (!string.IsNullOrEmpty(queryParameters.Sku))
-            {
-                products = products.Where(p => p.Sku == queryParameters.Sku);
-            }
-
-            if (!string.IsNullOrEmpty(queryParameters.Name))
-            {
-                products = products.Where(
-                    p => p.Name.ToLower().Contains(queryParameters.Name.ToLower()));
-            }
-
-            //products = products
-            //   .Skip(queryParameters.Size * (queryParameters.Page - 1))
-            //    .Take(queryParameters.Size);
-            return await products.ToArrayAsync();
-        }
-
-        public async Task<List<Category>> GetAllProductsFromSubCategory(string catName, ProductQueryParameters queryParameters)
-        {
-            var categorizedProducts = _context.Categories
-                .Where(c => c.Name == catName)
-                .Include(p => p.Products)
-                .ToListAsync();
-
-
-            //products = products
-            //   .Skip(queryParameters.Size * (queryParameters.Page - 1))
-            //    .Take(queryParameters.Size);
-            return await categorizedProducts;
+            // Default return type
+            return null;  
         }
         
 
@@ -74,6 +63,7 @@ namespace GymShopAPI.DAL.Controllers
 
             if (product == null)
             {
+                // Product doesn't exist or is not found
                 return null;
             }
 
@@ -92,7 +82,7 @@ namespace GymShopAPI.DAL.Controllers
         {
             if (id != product.Id)
             {
-                // als ID's niet matchen krijg je bad request (500)
+                // Id's don't match, something went wrong.
                 return null;
             }
 

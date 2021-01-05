@@ -24,26 +24,31 @@ namespace GymShopAPI.BLL.Controllers
             _ProductsDbAccess = ProductsDbAccess;
         }
 
-        /// <summary>
-        /// Gets all products limited by query parameters.
-        /// </summary>
-        [HttpGet]
-        public async Task<Product[]> GetAllProducts([FromQuery] ProductQueryParameters queryParameters)
+        [HttpGet("category/{mainCategory}/{catName}")]
+        public async Task<ActionResult<Category>> GetAllProductsFromSubCategory(string mainCategory, string catName, [FromQuery] ProductQueryParameters queryParameters)
         {
-            return await _ProductsDbAccess.GetAllProducts(queryParameters);
-        }
+            var products = await _ProductsDbAccess.GetAllProductsFromSubCategory(mainCategory, catName, queryParameters);
 
-        [HttpGet("category/{catName}")]
-        public async Task<List<Category>> GetAllProductsFromSubCategory(string catName, [FromQuery] ProductQueryParameters queryParameters)
-        {
-            return await _ProductsDbAccess.GetAllProductsFromSubCategory(catName, queryParameters);
+            if (products == null)
+            {
+                // This explicitly means that either of the categories is not found.
+                // This shouldn't happen if the categories exist but there's simply no products.
+                return NotFound();
+            }
+
+            return Ok(products);
         }
 
         //extra argument {id} zorgt ervoor dat er een extra argument word toegevoegd aan de huidige controller, de url is dus product/{id}
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            return await _ProductsDbAccess.GetProduct(id);
+            var product = await _ProductsDbAccess.GetProduct(id);
+            if(product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
         }
 
         [HttpPost]

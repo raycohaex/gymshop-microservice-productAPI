@@ -10,9 +10,8 @@ namespace GymShopAPI.DAL.Interfaces
 {
     public interface IProductsDbAccess
     {
-        public Task<Product[]> GetAllProducts(ProductQueryParameters queryParameters);
         public Task<Product> GetProduct(int id);
-        public Task<List<Category>> GetAllProductsFromSubCategory(string catName, ProductQueryParameters queryParameters);
+        public Task<Category> GetAllProductsFromSubCategory(string mainCategory, string catName, ProductQueryParameters queryParameters);
         public Task<ActionResult<Product>> PostProduct(Product product);
         public Task<IActionResult> PutProduct(int id, Product product);
         public Task<ActionResult<Product>> DeleteProduct(int id);
