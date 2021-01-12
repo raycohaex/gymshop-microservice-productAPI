@@ -17,6 +17,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.IO;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 
 namespace GymShopAPI.BLL
 {
@@ -55,6 +57,18 @@ namespace GymShopAPI.BLL
                                         .SetIsOriginAllowed((host) => true);
                                   });
             });
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer("Bearer", o =>
+            {
+                o.Authority = Configuration["KEYCLOAK_AUTHORITY_URL"];
+                o.Audience = Configuration["KEYCLOAK_AUDIENCE"];
+                
+                o.RequireHttpsMetadata = false;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -85,6 +99,8 @@ namespace GymShopAPI.BLL
             app.UseRouting();
 
             app.UseCors(MyAllowSpecificOrigins);
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

@@ -9,6 +9,7 @@ using GymShopAPI.DAL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GymShopAPI.BLL.Controllers
 {
@@ -52,6 +53,7 @@ namespace GymShopAPI.BLL.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Product>> PostProduct([FromBody] Product product)
         {
             await _ProductsDbAccess.PostProduct(product);
@@ -64,6 +66,7 @@ namespace GymShopAPI.BLL.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] Product product)
         {
             if (id != product.Id)
@@ -76,6 +79,7 @@ namespace GymShopAPI.BLL.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<Product>> DeleteProduct(int id)
         {
             return await _ProductsDbAccess.DeleteProduct(id);

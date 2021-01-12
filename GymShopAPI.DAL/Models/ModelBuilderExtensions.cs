@@ -11,7 +11,8 @@ namespace GymShopAPI.DAL.Models
                 new CategoryMain { Id = 2, Name = "Women" },
                 new CategoryMain { Id = 3, Name = "Unisex" },
                 new CategoryMain { Id = 4, Name = "Supplements" },
-                new CategoryMain { Id = 5, Name = "Accessories" }
+                new CategoryMain { Id = 5, Name = "Accessories" },
+                new CategoryMain { Id = 6, Name = "uncategorized" }
                 );
 
             modelBuilder.Entity<Category>().HasData(
@@ -35,7 +36,10 @@ namespace GymShopAPI.DAL.Models
                 new Category { Id = 14, Name = "Creatine", CategoryMainId = 4 },
                 new Category { Id = 15, Name = "Pre-Workout", CategoryMainId = 4 },
                 new Category { Id = 16, Name = "Post-Workout", CategoryMainId = 4 },
-                new Category { Id = 17, Name = "Vitamins", CategoryMainId = 4 });
+                new Category { Id = 17, Name = "Vitamins", CategoryMainId = 4 },
+                new Category { Id = 18, Name = "uncategorized", CategoryMainId = 6 });
+                
+                
 
             modelBuilder.Entity<Product>().HasData(
                 new Product { Id = 1, CategoryId = 1, Name = "Grunge Skater Jeans", Sku = "AWMGSJ", Price = 68, IsAvailable = true },
