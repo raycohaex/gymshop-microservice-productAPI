@@ -53,6 +53,9 @@ test:
     - "cd ../"
     - "cd $test"
     - "dotnet test"
+    - "cd ../"
+    - "cd ProductServiceIntegrationtests"
+    - "dotnet test"
   dependencies:
     - build
 
