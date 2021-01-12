@@ -15,6 +15,6 @@ namespace GymShopAPI.DAL.Interfaces
         public Task<ActionResult<Product>> PostProduct(Product product);
         public Task<IActionResult> PutProduct(int id, Product product);
         public Task<ActionResult<Product>> DeleteProduct(int id);
-
+        public Task<List<Product>> getAllProducts();
     }
 }

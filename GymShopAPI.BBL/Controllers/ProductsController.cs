@@ -52,6 +52,17 @@ namespace GymShopAPI.BLL.Controllers
             return NotFound();
         }
 
+        [HttpGet("all")]
+        public async Task<ActionResult<List<Product>>> getAllProducts([FromQuery] int index)
+        {
+            var product = await _ProductsDbAccess.getAllProducts();
+            if (product != null)
+            {
+                return product;
+            }
+            return NotFound();
+        }
+
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<Product>> PostProduct([FromBody] Product product)
