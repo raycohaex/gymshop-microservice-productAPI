@@ -53,7 +53,7 @@ namespace GymShopAPI.BLL.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<ActionResult<List<Product>>> getAllProducts([FromQuery] int index)
+        public async Task<ActionResult<Array>> getAllProducts([FromQuery] int index)
         {
             var product = await _ProductsDbAccess.getAllProducts();
             if (product != null)

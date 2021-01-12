@@ -70,11 +70,9 @@ namespace GymShopAPI.DAL.Controllers
             return product;
         }
 
-        public async Task<List<Product>> getAllProducts()
+        public async Task<Array> getAllProducts()
         {
-            List<Product> products = new List<Product>();
-
-            products = await _context.Products.ToListAsync();
+            var products = await _context.Products.ToArrayAsync();
 
             return products;
         }
