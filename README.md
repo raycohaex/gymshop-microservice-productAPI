@@ -44,10 +44,10 @@ Your appsettings.json file should look like this:
 You will need to run `Update-Datbase` in order to create the proper database schemes.
 
 ## Resources
-* [Gymshop Wiki](#)
+* [Gymshop Wiki](https://git.fhict.nl/I426114/gymshop-api/-/wikis/home)
 * Related projects
-    * [Gymshop frontend](#)
-    * [Gymshop authentication service](#)
+    * [Gymshop frontend](https://git.fhict.nl/I426114/gymshopapi-frontend)
+    * [Gymshop authentication service](https://gymshop-account-service.herokuapp.com/)
 
 ## License
 Copyright © 2020 Rayco Haex.
